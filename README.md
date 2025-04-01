@@ -3,7 +3,7 @@
 This project represents a test task for JetBrains Research department. It provides a simple method to optimize rule sets for classification tasks by applying **heuristic compression techniques** to reduce redundant rules while maintaining performance.
 
 ## Table of Contents
-- [Installation](#installation)
+- [Installation and execution](#installation-and-execution)
 - [Solution pipeline walk-through](#solution-pipeline-walk-through)
 - [Heuristics](#heuristics)
     - [Metrics for rule evaluation](#metrics-for-rule-evaluation)
@@ -18,9 +18,11 @@ This project represents a test task for JetBrains Research department. It provid
 - [Ideas not implemented](#ideas-not-implemented)
 - [Failed ideas](#failed-ideas)
 
-## Installation
+## Installation and execution
 
 The entire code has been written in the Jupyter Notebook to make it easier for the reviewer to access and check all the code at once. However, if required, the source code can be easily reorganized using modules and so.
+
+Therefore, running all the cells of the notebook, provided that the file structure is preserved, should be more than enough to run the solution.
 
 ## Solution pipeline walk-through
 
