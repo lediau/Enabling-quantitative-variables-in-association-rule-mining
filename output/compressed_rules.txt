@@ -1,0 +1,4 @@
+NOT Hb AND NOT Lymphocytes
+NOT Hb AND NOT Lymphocytes AND NOT Notch_1 AND NOT Lymphocytes_percent
+IL_1β
+Monocytes AND NOT sCD86
