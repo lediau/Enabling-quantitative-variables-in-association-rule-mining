@@ -13,7 +13,7 @@ This project represents a test task for JetBrains Research department. It provid
 
 ## Installation
 
-The entire code has been written in the Jupyter Notebook to make it easier for the reviewer to access and check all the code at once. However, if required, the source code can be reorganized using modules and so.
+The entire code has been written in the Jupyter Notebook to make it easier for the reviewer to access and check all the code at once. However, if required, the source code can be easily reorganized using modules and so.
 
 ## Solution pipeline walk-through
 
@@ -30,6 +30,45 @@ The entire code has been written in the Jupyter Notebook to make it easier for t
 
 ## Heuristics
 
+To avoid any confusion, let's settle once and for all how we define four types of (non)errors:
+
+- **True Positives (TP)**: Donors that satisfy the rule and are indeed old.
+- **False Positives (FP)**: Donors that satisfy the rule but are not old.
+- **False Negatives (FN)**: Donors that do not satisfy the rule but are old.
+- **True Negatives (TN)**: Donors that do not satisfy the rule and are not old.
+
+### [3] Metrics for rule evaluation
+
+Below, there is a simple scheme of the way the metrics are used, and further on we add the details for each metrics:
+![metric_rank](https://github.com/user-attachments/assets/e1f7b160-8a9b-4ae9-872e-803023380524)
+
+- About **f1 score**:
+
+$$prec = \frac{TP}{TP + FP}, \quad\quad recall = \frac{TP}{TP + FN}, \quad\quad f1 = 2\cdot\frac{prec \cdot recall}{prec + recall}.$$
+
+- About **completeness**:
+
+$$spec = \left|\text{biomarkers}\right|, \quad\quad freq = \frac{TP + FP}{\left|\text{donors}\right|}, \quad\quad compl = freq + \beta\cdot\min(spec, MAXLEN), \quad \text{where } MAXLEN = 6 \text{ and } \beta = \frac{1}{10}.$$
+
+*Parameters*: $\beta$ -- the weight of the specificness.
+
+*Hyperparameters*: MAXLEN -- the number of biomarkers or their negation in the rule.
+
+- About **p value** from **chi-square test**: see [documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chi2_contingency.html) if needed.
+- The aggregation formula for **evaluation**:
+
+$$\boxed{\text{eval} = w_1 \cdot \text{f1} + w_2\cdot \text{freq} + w_3\cdot (1 - \text{pval}),}\quad \text{where by default } w_1=4, w_2=2, w_3=4.$$
+
+*Parameters*: $w_1, w_2, w_3$.
+
+
+### [4] Threshhold
+
+### [6] Cluster-Based Rule Refinement 
+
+### [8] Evaluation Metrics for Rule Selection 
+
+### [9] Search for the optimal subset of rules
 
 
 ## Challenges
